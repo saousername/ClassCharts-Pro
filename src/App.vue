@@ -1,30 +1,58 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class='fullview'>
+    <Navbar :brand='brand' :pages='pages' :buttons='buttons' />
+    <router-view :user = 'user' />
   </div>
-  <router-view/>
 </template>
 
+<script>
+import Navbar from '@/components/Navbar'
+
+export default {
+  components: {
+    Navbar,
+  },
+  data() {
+    return {
+      user: null,
+      brand: 'Forums',
+      buttons: [{ "name":"Login", "link":"/login" }],
+      pages: [{ "name":"Home", "link":"/" }, { "name":"Threads", "link":"/threads" }]
+    }
+  },
+  created() {
+    if(this.user !== null) {
+      this.buttons = [{ "name":"My Profile", "link":"/me" }]
+    }
+  }
+}
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+a {
+  cursor: pointer;
 }
 
-#nav {
-  padding: 30px;
+.fullview {
+  min-height: 100vh;
+  width: 100%;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.page {
+  margin: 16px 12px 10px 12px;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.center {
+  justify-content: center;
+  align-items: center;
 }
 </style>
