@@ -1,6 +1,6 @@
 <template>
   <div class='fullview'>
-    <Navbar :brand='brand' :pages='pages' :buttons='buttons' />
+    <Navbar :brand='brand' :pages='pages' :buttons='buttons' :darkmode='darkmode'/>
     <router-view :user = 'user' />
   </div>
 </template>
@@ -17,7 +17,8 @@ export default {
       user: null,
       brand: 'Forums',
       buttons: [{ "name":"Login", "link":"/login" }],
-      pages: [{ "name":"Home", "link":"/" }, { "name":"Threads", "link":"/threads" }]
+      pages: [{ "name":"Home", "link":"/" }, { "name":"Threads", "link":"/threads" }],
+      darkmode: false
     }
   },
   created() {

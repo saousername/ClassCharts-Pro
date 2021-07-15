@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav :class="['navbar navbar-expand-lg', darkmode ? 'navbar-dark bg-dark' : 'navbar-light bg-light']">
     <div class="container-fluid">
       <a class="navbar-brand" @click="redirect('/')">{{brand}}</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +25,8 @@ export default {
     brand: String,
     buttons: Array,
     pages: Array,
-    user: null
+    user: null,
+    darkmode: Boolean
   },
   methods: {
     redirect(destination) {
